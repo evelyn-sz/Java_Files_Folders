@@ -1,13 +1,29 @@
 package com.codeclan.example.FilesFolders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "files")
 public class File {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="name")
     private String name;
 
+    @Column(name="extension")
     private String extension;
 
+    @Column(name="size")
     private double size;
 
+    @ManyToOne
+    @JoinColumn(name="folder_id", nullable = false)
+    @JsonIgnoreProperties({"files"})
     private Folder folder;
 
     public File(String name, String extension, double size, Folder folder) {

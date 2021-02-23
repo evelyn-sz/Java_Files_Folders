@@ -1,20 +1,49 @@
 package com.codeclan.example.FilesFolders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "folders")
 public class Folder {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="name")
     private String title;
 
+    @JsonIgnoreProperties({"folder"})
+    @OneToMany(mappedBy = "folder")
     private List<File> files;
 
-    private User user;
+    @ManyToMany
+    @JsonIgnoreProperties({"folders"})
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "folders_users",
+            joinColumns = { @JoinColumn(
+                    name = "folder_id",
+                    nullable = false,
+                    updatable = false
+            )},
+            inverseJoinColumns = {@JoinColumn(
+                    name="user_id",
+                    nullable = false,
+                    updatable = false
+            )}
+    )
+    private List<User> users;
 
-    public Folder(String title, User user) {
+    public Folder(String title) {
         this.title = title;
-        this.user = user;
         this.files = new ArrayList<>();
+        this.users = new ArrayList<>();
     }
 
     public Folder(){};
@@ -31,19 +60,15 @@ public class Folder {
         return files;
     }
 
-    public void setFiles(List<File> files) {
-        this.files = files;
-    }
-
     public void addFile(File file){
         this.files.add(file);
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void addUser(User user){
+        this.users.add(user);
     }
 }
