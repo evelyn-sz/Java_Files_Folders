@@ -1,4 +1,4 @@
-package models;
+package com.codeclan.example.filesfolders.components.models;
 
 public class File {
 
