@@ -1,4 +1,4 @@
-package com.codeclan.example.filesfolders.components.components;
+package com.codeclan.example.FilesFolders.components;
 
 public class Seeds {
 }

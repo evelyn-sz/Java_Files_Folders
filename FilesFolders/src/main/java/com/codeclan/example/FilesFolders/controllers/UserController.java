@@ -1,4 +1,4 @@
-package com.codeclan.example.filesfolders.components.controllers;
+package com.codeclan.example.FilesFolders.controllers;
 
 public class UserController {
 }

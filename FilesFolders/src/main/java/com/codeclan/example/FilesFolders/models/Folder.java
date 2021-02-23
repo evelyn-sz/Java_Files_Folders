@@ -1,4 +1,4 @@
-package com.codeclan.example.filesfolders.components.models;
+package com.codeclan.example.FilesFolders.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,8 @@ public class Folder {
         this.files = new ArrayList<>();
     }
 
+    public Folder(){};
+
     public String getTitle() {
         return title;
     }
@@ -31,6 +33,10 @@ public class Folder {
 
     public void setFiles(List<File> files) {
         this.files = files;
+    }
+
+    public void addFile(File file){
+        this.files.add(file);
     }
 
     public User getUser() {

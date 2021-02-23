@@ -1,4 +1,4 @@
-package com.codeclan.example.filesfolders.components.models;
+package com.codeclan.example.FilesFolders.models;
 
 public class File {
 
@@ -50,4 +50,5 @@ public class File {
     public void setFolder(Folder folder) {
         this.folder = folder;
     }
+
 }

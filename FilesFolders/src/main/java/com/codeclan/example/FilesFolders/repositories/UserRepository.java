@@ -1,4 +1,4 @@
-package com.codeclan.example.filesfolders.components.repositories;
+package com.codeclan.example.FilesFolders.repositories;
 
 public interface UserRepository {
 }
